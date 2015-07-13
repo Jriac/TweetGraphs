@@ -36,7 +36,9 @@
 		</style>
 	</head>
 	<body>
-		<h1>Hi!</h1>
+		<div class="container">
+			<div class="content">
+				<h1 class="title">Hi!</h1>
 			</div>
 		</div>
 	</body>
