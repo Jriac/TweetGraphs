@@ -20,4 +20,8 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
+Route::resource('/formregister', 'InsertUserController@create');
+
+Route::get('/register', 'RegisterController');
+
 Route::get('/usertags/{userid?}','UserController@index');
