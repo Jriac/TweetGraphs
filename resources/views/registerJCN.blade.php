@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="bootcamp">
 
 <head>
     <meta charset="UTF-8">
@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="css/normalize.css">
     <script src="/bower_components/jquery/jquery.js" type="text/javascript"></script>
 
+    <script src="/bower_components/angular/angular.js"></script>
+<script src="/bower_components/angular-resource/angular-resource.js"></script>
+<script src="/js/bootcamp.js"></script>
     <link rel="stylesheet" href="css/style.css">
 
     <script>
@@ -44,21 +47,21 @@
             <div id="signup">
                 <h1>Registrarse</h1>
 
-                <form action="/formregister" method="post" name="f1">
+                <form ng-submit="submit()" action="/form/register" name="f1">
 
                     <div class="top-row">
                         <div class="field-wrap">
                             <label>
                                 NOMBRE<span class="req">*</span>
                             </label>
-                            <input type="text" required autocomplete="off" />
+                            <input type="text" name="nombre" ng-model="user.nom" required autocomplete="off" />
                         </div>
 
                         <div class="field-wrap">
                             <label>
                                 APELLIDO<span class="req">*</span>
                             </label>
-                            <input type="text" required autocomplete="off" />
+                            <input type="text" name="apellido" ng-model="user.apellido" required autocomplete="off" />
                         </div>
                     </div>
 
@@ -66,7 +69,7 @@
                         <label>
                             EMAIL<span class="req">*</span>
                         </label>
-                        <input type="email" name="email" required autocomplete="off" />
+                        <input type="email" name="email" ng-model="user.email" required autocomplete="off" />
                     </div>
 
 
@@ -74,14 +77,14 @@
                         <label>
                             CONTRASEÑA<span class="req">*</span>
                         </label>
-                        <input type="password"  name="pwd" size="20" required autocomplete="off" />
+                        <input type="password"  name="pwd" ng-model="user.pwd" ng-minlength="6" ng-maxlength="16" required autocomplete="off" />
                     </div>
 
                     <div class="field-wrap">
                         <label id="pwd2">
                             REPETIR CONTRASEÑA<span class="req">*</span>
                         </label>
-                        <input type="password" name="pwd2" onkeyup="check_pass(); return false;" size="20" required autocomplete="off" />
+                        <input type="password" name="pwd2" ng-model="user.pwd2" onkeyup="check_pass()" ng-minlength="6" ng-maxlength="16" required autocomplete="off" />
                     </div>
                     <p class="forgot"><a href="#">Campos opcionales:</a></p>
                     <div class="field-wrap">
@@ -91,7 +94,7 @@
                         <input type="text" name="twitter" autocomplete="off" />
                         
                     </div>
-                    <button type="submit" id="submit" class="button button-block" />Enviar</button>
+                    <button ng-disabled="f1.$invalid" id="submit" class="button button-block" />Enviar</button>
 
                 </form>
 

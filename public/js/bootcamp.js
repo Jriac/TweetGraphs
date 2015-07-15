@@ -75,6 +75,5 @@ angular.module('bootcamp').factory(
              return resource;
             
         }
-    ]
-
+        ]
 );
