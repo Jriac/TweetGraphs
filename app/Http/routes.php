@@ -20,5 +20,9 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
-Route::get('/usertags/{userid?}','UserController@index');
 Route::get('register','RegisterController@index');
+
+Route::resource('item','ItemController');
+Route::resource('trends','TrendsController');
+Route::resource('trendyLista','TrendsViewController');
+Route::resource('testsclass','TestclassController');
