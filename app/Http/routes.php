@@ -20,8 +20,9 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
-Route::resource('/formregister', 'InsertUserController@create');
-
+Route::resource('/form/register', 'InsertUserController@registerUser');
 Route::get('/register', 'RegisterController');
 
-Route::get('/usertags/{userid?}','UserController@index');
+/*
+ * Route::group(['middleware' => 'auth'], function() );
+ */

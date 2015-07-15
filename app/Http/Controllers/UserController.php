@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller {
@@ -14,7 +15,12 @@ class UserController extends Controller {
 	 */
 	public function index()
 	{
-		dd( "Metode index() de la classe UserController");
+		$user = new User;
+
+        $user->name ='Prueba';
+
+        $user->save();
+
 	}
 
 	/**
