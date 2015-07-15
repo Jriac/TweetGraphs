@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration {
+class CreateValidateUsersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,14 +12,13 @@ class CreateUsersTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('users', function(Blueprint $table)
+		Schema::create('validate_users', function(Blueprint $table)
 		{
-			$table->increments('id');
-			$table->string('name');
 			$table->string('mail')->unique();
-			$table->string('password', 60);
-			$table->string('status',10)->default('unactive');
+			$table->string('hash',60);
 			$table->timestamps();
+			$table->primary('mail');
+			$table->foreign('mail')->references('mail')->on('users');
 		});
 	}
 
@@ -30,7 +29,7 @@ class CreateUsersTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('users');
+		Schema::drop('validate_users');
 	}
 
 }
