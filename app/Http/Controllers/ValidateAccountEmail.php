@@ -8,16 +8,16 @@ use Illuminate\Http\Request;
 class ValidateAccountEmail extends Controller {
     
     
-	const $SEED = "ABCDEFGHIJKLMNOPQRSTVWYZ123456789"
-    private var $hash;
-    private var $correo;
-    private var $url;
-    private var $palabra;
+	const SEED = "ABCDEFGHIJKLMNOPQRSTVWYZ123456789";
+    private  $hash;
+    private  $correo;
+    private  $url;
+    private  $palabra;
     
-    public __construct($email,$url){ 
+    public function _construct($email,$url){ 
       $this->correo=$email;
-      $this->$url=$url
-      $this->palabra = str_shuffle(self::$SEED);   
+      $this->url=$url;
+      $this->palabra = str_shuffle(self::SEED);   
     
     }
     
@@ -33,14 +33,14 @@ class ValidateAccountEmail extends Controller {
         
         
         $this->hash = $this->makeHash();
-        $this->url = $this->url."?hash=".$hash; 
+        $this->url = $this->url."?hash=".$this->hash; 
     
         $message = '<div> Hola! , gracias por registrarte. Para terminar el registro y activar tu cuenta haz clic en el siguiente enlance
         <a  href="'.$this->url.'"><a>'.$this->url.'</div>';
 
-        mail($to, $subject, $message, $headers);
+        $sended=mail($to, $subject, $message, $headers);
         
-        
+        return $sended;
     }
     
     public function insertHash(){
