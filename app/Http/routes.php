@@ -20,4 +20,6 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
+Route::get('/recover','RecoverController@index');
+
 Route::get('/usertags/{userid?}','UserController@index');
