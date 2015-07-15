@@ -21,3 +21,4 @@ Route::controllers([
 ]);
 
 Route::get('/usertags/{userid?}','UserController@index');
+Route::get('register','RegisterController@index');
