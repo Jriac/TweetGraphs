@@ -7,7 +7,8 @@
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
 
     <link rel="stylesheet" href="css/normalize.css">
-    <script src="/bower_components/jquery/jquery.js" type="text/javascript"></script>
+    <script src="/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="/js/function_submit.js" type="text/javascript"></script>
 
     <link rel="stylesheet" href="css/style.css">
 
@@ -28,10 +29,13 @@
         }
     </script>
 
-
 </head>
 
 <body>
+
+    <div class="title" id="data_title">
+        CABRONESS!!
+    </div>
 
     <div class="form">
 
@@ -44,8 +48,8 @@
             <div id="signup">
                 <h1>Registrarse</h1>
 
-                <form action="/formregister" method="post" name="f1">
-
+                <form name="f1">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="top-row">
                         <div class="field-wrap">
                             <label>
@@ -66,7 +70,7 @@
                         <label>
                             EMAIL<span class="req">*</span>
                         </label>
-                        <input type="email" name="email" required autocomplete="off" />
+                        <input type="email" id="email" name="email" required autocomplete="off" />
                     </div>
 
 
@@ -74,7 +78,7 @@
                         <label>
                             CONTRASEÑA<span class="req">*</span>
                         </label>
-                        <input type="password"  name="pwd" size="20" required autocomplete="off" />
+                        <input type="password" id="password" name="password" size="20" required autocomplete="off" />
                     </div>
 
                     <div class="field-wrap">
@@ -91,7 +95,7 @@
                         <input type="text" name="twitter" autocomplete="off" />
                         
                     </div>
-                    <button type="submit" id="submit" class="button button-block" />Enviar</button>
+                    <button type="submit" id="submit_register" class="button button-block" />Enviar</button>
 
                 </form>
 
@@ -132,9 +136,6 @@
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
     <script src="js/index.js"></script>
-
-
-
 
 </body>
 
