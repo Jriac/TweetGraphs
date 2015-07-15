@@ -19,5 +19,3 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
-
-Route::get('/usertags/{userid?}','UserController@index');
