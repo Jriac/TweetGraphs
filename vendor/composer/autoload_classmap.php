@@ -6,6 +6,17 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Abraham\\TwitterOAuth\\Config' => $vendorDir . '/abraham/twitteroauth/src/Config.php',
+    'Abraham\\TwitterOAuth\\Consumer' => $vendorDir . '/abraham/twitteroauth/src/Consumer.php',
+    'Abraham\\TwitterOAuth\\HmacSha1' => $vendorDir . '/abraham/twitteroauth/src/HmacSha1.php',
+    'Abraham\\TwitterOAuth\\Request' => $vendorDir . '/abraham/twitteroauth/src/Request.php',
+    'Abraham\\TwitterOAuth\\Response' => $vendorDir . '/abraham/twitteroauth/src/Response.php',
+    'Abraham\\TwitterOAuth\\SignatureMethod' => $vendorDir . '/abraham/twitteroauth/src/SignatureMethod.php',
+    'Abraham\\TwitterOAuth\\Token' => $vendorDir . '/abraham/twitteroauth/src/Token.php',
+    'Abraham\\TwitterOAuth\\TwitterOAuth' => $vendorDir . '/abraham/twitteroauth/src/TwitterOAuth.php',
+    'Abraham\\TwitterOAuth\\TwitterOAuthException' => $vendorDir . '/abraham/twitteroauth/src/TwitterOAuthException.php',
+    'Abraham\\TwitterOAuth\\Util' => $vendorDir . '/abraham/twitteroauth/src/Util.php',
+    'Abraham\\TwitterOAuth\\Util\\JsonDecoder' => $vendorDir . '/abraham/twitteroauth/src/Util/JsonDecoder.php',
     'App\\Commands\\Command' => $baseDir . '/app/Commands/Command.php',
     'App\\Console\\Commands\\Inspire' => $baseDir . '/app/Console/Commands/Inspire.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
@@ -15,6 +26,8 @@ return array(
     'App\\Http\\Controllers\\Auth\\PasswordController' => $baseDir . '/app/Http/Controllers/Auth/PasswordController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
+    'App\\Http\\Controllers\\ItemController' => $baseDir . '/app/Http/Controllers/ItemController.php',
+    'App\\Http\\Controllers\\TrendsController' => $baseDir . '/app/Http/Controllers/TrendsController.php',
     'App\\Http\\Controllers\\UserController' => $baseDir . '/app/Http/Controllers/UserController.php',
     'App\\Http\\Controllers\\WelcomeController' => $baseDir . '/app/Http/Controllers/WelcomeController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
