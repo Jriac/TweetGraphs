@@ -3,10 +3,34 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\User;
 use Illuminate\Http\Request;
 
-class UserController extends Controller {
+class InsertUserController extends Controller {
+
+    /**
+     * Creates a UserModel, and set his email and password.
+     */
+    public function registerUser()
+    {
+        $respuesta = array("header" => array("success" => "yes", "msg" => "mensaje error"), "body" => array("asas"));
+        echo response()->json($respuesta);
+        /*
+        $user = new UserModel;
+        $user->email = $_POST['email'];
+        $password = $_POST['password'];
+
+        $password = "1234";
+        if (defined('CRYPT_BLOWFISH') && CRYPT_BLOWFISH) {
+            $user->password = crypt($password, '$2y$07$esteesuntextoaleatoreo$');
+        }
+
+        if($user->AddToUsers()){
+            $respuesta = array();
+            return response()->json($respuesta);
+            return view('registerJCN')->with('exists', true);
+        }*/
+    }
+
 
 	/**
 	 * Display a listing of the resource.
@@ -15,12 +39,7 @@ class UserController extends Controller {
 	 */
 	public function index()
 	{
-		$user = new User;
-
-        $user->name ='Prueba';
-
-        $user->save();
-
+		//
 	}
 
 	/**
@@ -30,7 +49,7 @@ class UserController extends Controller {
 	 */
 	public function create()
 	{
-		//
+        //
 	}
 
 	/**

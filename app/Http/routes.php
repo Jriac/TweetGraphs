@@ -30,3 +30,9 @@ Route::resource('testsclass','TestclassController');
 Route::get('/recover','RecoverController@index');
 
 
+Route::resource('/form/register', 'InsertUserController@registerUser');
+Route::get('/register', 'RegisterController');
+
+/*
+ * Route::group(['middleware' => 'auth'], function() );
+ */

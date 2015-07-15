@@ -31,4 +31,20 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
+
+    /*
+     * cjontorller
+     $userObj = User::find(Auth:user()->id);
+     $userObj->getLogs();
+     */
+
+
+
+
+    public function getLogs()
+    {
+        $userId = $this->id;
+        $logsObj = Logs::where('user_id', $userId)->get();
+        return $logsObj;
+    }
 }
