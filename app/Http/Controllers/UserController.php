@@ -41,6 +41,7 @@ class UserController extends Controller {
 		else return ResponseController::CreateJSON("NO","USER EXISTS","USER ALREADY EXISTS IN DB");	
 	}
 
+
 	public function RegisterUser(){
 
 		$mail = $_POST['email'];

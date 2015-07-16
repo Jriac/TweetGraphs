@@ -33,7 +33,7 @@ Route::resource('testsclass','TestclassController');
 Route::get('/recover','RecoverController@index');
 
 
-Route::post('/form/register', 'UserController@RegisterUser');
+Route::get('/login', 'UserController@LogIn');
 Route::get('/register', 'RegisterController@index');
 
 /*
