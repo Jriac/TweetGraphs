@@ -33,6 +33,7 @@ Route::get('/recover','RecoverController@index');
 
 
 Route::post('/form/register', 'UserController@RegisterUser');
+Route::post('/form/login', 'UserController@LogIn');
 
 
 /*

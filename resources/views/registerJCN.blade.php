@@ -116,19 +116,19 @@
                         <label>
                             EMAIL<span class="req">*</span>
                         </label>
-                        <input type="email" required autocomplete="off" />
+                        <input type="email" name="email_login" id="email_login" required autocomplete="off" />
                     </div>
 
                     <div class="field-wrap">
                         <label>
                             CONTRASEÑA<span class="req">*</span>
                         </label>
-                        <input type="password" required autocomplete="off" />
+                        <input type="password" name="password_login" id="password_login" required autocomplete="off" />
                     </div>
 
                     <p class="forgot"><a href="#">¿Has olvidado tu contraseña?</a></p>
 
-                    <button ng-disabled="f1.$invalid" id="submit_login" class="button button-block" />Acceder</button>
+                    <button id="submit_login" class="button button-block" />Acceder</button>
 
                 </form>
 

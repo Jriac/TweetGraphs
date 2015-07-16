@@ -1,4 +1,4 @@
-$(function function_submit() {
+$(function function_login() {
     $("#submit_login").click(function() {
         $.ajax({
             type: "POST",
