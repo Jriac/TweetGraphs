@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserTagsTable extends Migration {
+class CreateValidateUsersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,13 @@ class CreateUserTagsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('user_tags', function(Blueprint $table)
+		Schema::create('validate_users', function(Blueprint $table)
 		{
-			$table->increments('id');
-			$table->integer('userid');
-			$table->integer('tagid');
+			$table->string('mail')->unique();
+			$table->string('hash',60);
 			$table->timestamps();
+			$table->primary('mail');
+			$table->foreign('mail')->references('mail')->on('users');
 		});
 	}
 
@@ -28,7 +29,7 @@ class CreateUserTagsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('user_tags');
+		Schema::drop('validate_users');
 	}
 
 }

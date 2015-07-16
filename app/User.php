@@ -6,6 +6,8 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
+use DB;
+
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
 	use Authenticatable, CanResetPassword;
@@ -17,34 +19,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $table = 'users';
 
-	/**
-	 * The attributes that are mass assignable.
-	 *
-	 * @var array
-	 */
-	protected $fillable = ['name', 'email', 'password'];
+	static public function Exists($mail){
+		$user_id = DB::select('select id from users where mail = ?',array($mail));
+		if(count($user_id)== 0) return -1;
+		else return $user_id[0]->id;
+	}
+	
+	static public function UpdateAsActive($mail){
+		DB::update('update users set status = ? where mail = ?',array('active',$mail));
 
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
-	protected $hidden = ['password', 'remember_token'];
-
-
-    /*
-     * cjontorller
-     $userObj = User::find(Auth:user()->id);
-     $userObj->getLogs();
-     */
-
-
-
-
-    public function getLogs()
-    {
-        $userId = $this->id;
-        $logsObj = Logs::where('user_id', $userId)->get();
-        return $logsObj;
-    }
+	}
 }
