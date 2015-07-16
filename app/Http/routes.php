@@ -23,8 +23,7 @@ Route::controllers([
 ]);
 
 
-
-Route::get('register','RegisterController@index');
+Route::get('/register','RegisterController@index');
 
 Route::resource('item','ItemController');
 Route::resource('trends','TrendsController');
@@ -33,8 +32,8 @@ Route::resource('testsclass','TestclassController');
 Route::get('/recover','RecoverController@index');
 
 
-Route::get('/login', 'UserController@LogIn');
-Route::get('/register', 'RegisterController@index');
+Route::post('/form/register', 'UserController@RegisterUser');
+
 
 /*
  * Route::group(['middleware' => 'auth'], function() );
