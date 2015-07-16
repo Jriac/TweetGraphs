@@ -31,6 +31,8 @@ Route::resource('trendyLista','TrendsViewController');
 Route::resource('testsclass','TestclassController');
 Route::get('/recover','RecoverController@index');
 
+//Route::get('/form/sendEmail','UserController@index');
+Route::post('/form/sendEmail','SendEmail@index');
 
 Route::post('/form/register', 'UserController@RegisterUser');
 
