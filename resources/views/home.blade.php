@@ -10,16 +10,6 @@
 				<div class="panel-body">
 					You are logged in!
 				</div>
-				<div class="panel-heading">#bacalaodebilbao</div>
-
-				<div class="panel-body">
-					Stats
-				</div>
-				<div class="panel-heading">#developers</div>
-
-				<div class="panel-body">
-					Stats
-				</div>
 			</div>
 		</div>
 	</div>

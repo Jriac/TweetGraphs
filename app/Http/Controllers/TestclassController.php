@@ -15,8 +15,10 @@ class TestclassController extends Controller {
 	 */
 	public function index()
 	{
-        $object= new ValidateAccountEmail("jriac91@gmail.com","http://bootcamp.incubio.com:8080/activate");
-       return response()->json(['sended' => $object->sendEmail(), 'state' => 'CA']);
+        $object= new ValidateAccountEmail();
+
+
+       return response()->json(['sended' => $object->sendEmail("jriac91@gmail.com"), 'state' => 'CA']);
 	}
 
 	/**

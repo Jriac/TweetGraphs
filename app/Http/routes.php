@@ -13,16 +13,29 @@
 
 Route::get('/', 'WelcomeController@index');
 
-Route::get('home', 'HomeController@index');
+Route::get('home', ['middleware' => 'auth','uses'=>'HomeController@index']);
+
+Route::get('prueba','UserController@prueba');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
 
-Route::get('register','RegisterController@index');
+
+Route::get('/register','RegisterController@index');
 
 Route::resource('item','ItemController');
 Route::resource('trends','TrendsController');
 Route::resource('trendyLista','TrendsViewController');
 Route::resource('testsclass','TestclassController');
+Route::get('/recover','RecoverController@index');
+
+
+Route::post('/form/register', 'UserController@RegisterUser');
+
+
+/*
+ * Route::group(['middleware' => 'auth'], function() );
+ */
+

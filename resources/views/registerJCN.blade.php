@@ -7,7 +7,8 @@
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
 
     <link rel="stylesheet" href="css/normalize.css">
-    <script src="/bower_components/jquery/jquery.js" type="text/javascript"></script>
+    <script src="/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="/js/function_submit.js" type="text/javascript"></script>
 
     <script src="/bower_components/angular/angular.js"></script>
 <script src="/bower_components/angular-resource/angular-resource.js"></script>
@@ -31,7 +32,6 @@
         }
     </script>
 
-
 </head>
 
 <body>
@@ -47,14 +47,17 @@
             <div id="signup">
                 <h1>Registrarse</h1>
 
-                <form ng-submit="submit()" action="/form/register" name="f1">
+                <form ng-submit="submit()" name="f1">
+
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                     <div class="top-row">
                         <div class="field-wrap">
                             <label>
                                 NOMBRE<span class="req">*</span>
                             </label>
-                            <input type="text" name="nombre" ng-model="user.nom" required autocomplete="off" />
+                            <input type="text" name="username" ng-model="user.nom" required autocomplete="off" />
+
                         </div>
 
                         <div class="field-wrap">
@@ -69,7 +72,8 @@
                         <label>
                             EMAIL<span class="req">*</span>
                         </label>
-                        <input type="email" name="email" ng-model="user.email" required autocomplete="off" />
+                        <input type="email" name="email" id="email" ng-model="user.email" required autocomplete="off" />
+
                     </div>
 
 
@@ -77,7 +81,8 @@
                         <label>
                             CONTRASEÑA<span class="req">*</span>
                         </label>
-                        <input type="password"  name="pwd" ng-model="user.pwd" ng-minlength="6" ng-maxlength="16" required autocomplete="off" />
+                        <input type="password"  name="password" id="password" ng-model="user.password" ng-minlength="6" ng-maxlength="16" required autocomplete="off" />
+
                     </div>
 
                     <div class="field-wrap">
@@ -94,7 +99,8 @@
                         <input type="text" name="twitter" autocomplete="off" />
                         
                     </div>
-                    <button ng-disabled="f1.$invalid" id="submit" class="button button-block" />Enviar</button>
+                    <button ng-disabled="f1.$invalid" id="submit_register" class="button button-block" />Enviar</button>
+
 
                 </form>
 
@@ -135,9 +141,6 @@
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
     <script src="js/index.js"></script>
-
-
-
 
 </body>
 
