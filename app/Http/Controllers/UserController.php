@@ -22,8 +22,7 @@ class UserController extends Controller {
 			$user->password = $password;
 			$user->name = $name;
 			$user->save();
-			$validate = new ValidateAccountEmail;
-			$validate ->sendEmail($user->mail);
+			ValidateAccountEmail::sendEmail($mail);
 			return true;
 		}
 
