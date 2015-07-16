@@ -7,36 +7,40 @@ use Illuminate\Http\Request;
 
 class ValidateAccountEmail extends Controller {
     
-    
+    const URL = "http://bootcamp.incubio.com:8080/activate";
 	const SEED = "ABCDEFGHIJKLMNOPQRSTVWYZ123456789";
     private  $hash;
     private  $correo;
     private  $url;
     private  $palabra;
     
-    public function _construct($email,$url){ 
-      $this->correo=$email;
-      $this->url=$url;
+    public function _construct(){ 
+ 
       $this->palabra = str_shuffle(self::SEED);   
     
     }
     
     
-    public function sendEmail(){
+    public function sendEmail($mailAccount){
+        $this->correo=$mailAccount;
+        
         $to      = $this->correo;
         $subject = 'Correo de Activacion';
         $headers = 'From: webmaster@Tweetgrphs.com' . "\r\n" .
         'Reply-To: webmaster@Tweetgrphs.com' . "\r\n" .
+        'MIME-Version: 1.0' . "\r\n".
+        'Content-type:text/html;charset=UTF-8' . "\r\n".
         'X-Mailer: PHP/' . phpversion();
 
 
         
         
         $this->hash = $this->makeHash();
-        $this->url = $this->url."?hash=".$this->hash; 
+        $this->url = self::URL."?hash=".$this->hash; 
     
-        $message = '<div> Hola! , gracias por registrarte. Para terminar el registro y activar tu cuenta haz clic en el siguiente enlance
-        <a  href="'.$this->url.'"><a>'.$this->url.'</div>';
+        $message = '<div> Hola! , gracias por registrarte.
+        Para terminar el registro y activar tu cuenta haz clic en el siguiente enlance
+        <a href="'.$this->url.'">'.$this->url.'<a></div>';
 
         $sended=mail($to, $subject, $message, $headers);
         
@@ -45,12 +49,12 @@ class ValidateAccountEmail extends Controller {
     
     public function insertHash(){
         
-        
+        ValidateController::MailSent($this->correo, $this->hash);
     }
     
     private function makeHash(){
         
-        $hash=sha1($this->palabra);
+        $hash=crypt($this->correo,$this->palabra);
         return $hash;
         
         
