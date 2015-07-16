@@ -5,10 +5,12 @@ use App\Http\Controllers\Controller;
 
 use App\User;
 use App\ValidateUser;
-
+use App\PasswordRecovery;
 use Illuminate\Http\Request;
 
 use Auth;
+
+use Mail;
 
 class UserController extends Controller {
 
@@ -37,7 +39,7 @@ class UserController extends Controller {
 
     
         $message = '<div> Hola! , gracias por registrarte.
-        Para terminar el registro y activar tu cuenta haz clic en el siguiente enlance
+        Para terminar el registro y activar tu cuenta haz clic en el siguiente enlace
         <a href="'.$URL.'">'.$URL.'<a></div>';
 
         ValidateController::MailSent($mail,$hash);
@@ -84,13 +86,12 @@ class UserController extends Controller {
 
 	public function RegisterUser(){
 
-		$mail = $_POST['email'];
+		$mail = $_POST['mail'];
         $password = $_POST['password'];
         $name = $_POST['name'];
         $password = $this->CryptData($password);
         $result = $this->AddToUsers($mail,$password,$name);
         $response = $this->RegisterResponse($result);
-
         return response()->json($response);
 
 	}
@@ -103,7 +104,7 @@ class UserController extends Controller {
 		}
 
 		else{
-			return User::CheckPassword($user_id,$password);
+			return array($user_id,User::CheckPassword($user_id,$password));
 		}
 	}
 
@@ -115,12 +116,72 @@ class UserController extends Controller {
 	}
 
 	public function LogIn(){
-		$mail = $_POST['email'];
+		$mail = $_POST['mail'];
         $password = $_POST['password'];
         $result = $this->IsValidUser($mail,$password);
-        $response = $this->LogInResponse($result);
+        if($result[1] == true){
+        	Auth::loginUsingId($result[0]);
+        }
+        $response = $this->LogInResponse($result[1]);
 
         return response()->json($response);
+	}
+
+	private function SendRecoverResponse($res,$mail){
+		if($res){
+		   return ResponseController::CreateJSON("YES","MAIL SENT", "RECOVERY MAIL SENT TO" . $mail);	
+		}
+		else return ResponseController::CreateJSON("NO","ERROR","WRONG MAIL");	
+	}
+
+	public function NewPassword(){
+		$new_password = $_POST['password'];
+		
+	}
+
+	public function RecoverySolicited(){
+		$hash = $_GET['hash'];
+		PasswordRecovery::RecoverUsed($hash);
+		return view('change_password');
+	}
+
+	private function SendRecoverMail($mail){
+		$to      = $mail;
+        $subject = 'Recuperación de Contraseña';
+        $headers = 'From: webmaster@tweetgraphs.com' . "\r\n" .
+        'Reply-To: webmaster@tweetgraphs.com' . "\r\n" .
+        'MIME-Version: 1.0' . "\r\n".
+        'Content-type:text/html;charset=UTF-8' . "\r\n".
+        'X-Mailer: PHP/' . phpversion();
+        $hash = $this->CryptData($mail);
+
+        $hash = strtr($hash, array('.' => 'z'));
+
+        $URL = "http://bootcamp.incubio.com:8080/recoverpass";
+
+        $URL = $URL."?hash=".$hash; 
+
+    
+        $message = '<div> Para recuperar tu contraseña haz clic en el siguiente enlace
+        <a href="'.$URL.'">'.$URL.'<a></div>';
+
+        RecoveryController::MailSent($mail,$hash);
+
+        mail($to, $subject, $message, $headers);
+	}
+
+	public function SendRecoverPassword(){
+		$mail = $_POST['mail'];
+		$value = User::Exists($mail);
+		$respuesta;
+		if($value == -1){
+			$respuesta = $this->SendRecoverResponse(false,$mail);
+		}
+		else{
+			$this->SendRecoverMail($mail);
+			$respuesta = $this->SendRecoverResponse(true,$mail);
+		}
+		return response()->json($respuesta);
 	}
 
 
