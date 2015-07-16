@@ -28,6 +28,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	static public function UpdateAsActive($mail){
 		DB::update('update users set status = ? where mail = ?',array('active',$mail));
 		$user_id = DB::select('select id from users where mail = ?',array($mail));
+		$user_id = $user_id[0]->id;
 		return $user_id;
 
 	}
