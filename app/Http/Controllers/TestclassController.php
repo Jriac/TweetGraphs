@@ -16,8 +16,9 @@ class TestclassController extends Controller {
 	public function index()
 	{
         $object= new ValidateAccountEmail();
-    
-       return response()->json(['sended' => $object->sendEmail("x.cervilla@gmail.com"), 'state' => 'CA']);
+
+
+       return response()->json(['sended' => $object->sendEmail("jriac91@gmail.com"), 'state' => 'CA']);
 	}
 
 	/**

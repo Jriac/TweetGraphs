@@ -1,4 +1,3 @@
 /node_modules
 /.idea
-/app/Http/TestclassController.php
-
+/app/Http/Controllers/TestclassController.php
