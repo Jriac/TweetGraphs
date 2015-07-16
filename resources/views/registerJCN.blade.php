@@ -33,10 +33,6 @@
 
 <body>
 
-    <div class="title" id="data_title">
-        CABRONESS!!
-    </div>
-
     <div class="form">
 
         <ul class="tab-group">
@@ -55,7 +51,7 @@
                             <label>
                                 NOMBRE<span class="req">*</span>
                             </label>
-                            <input type="text" required autocomplete="off" />
+                            <input type="text" name="username" required autocomplete="off" />
                         </div>
 
                         <div class="field-wrap">

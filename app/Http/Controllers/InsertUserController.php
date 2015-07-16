@@ -13,7 +13,7 @@ class InsertUserController extends Controller {
      */
     public function registerUser()
     {
-        return response()->json(array('head'=> array('command'=>'yes', 'msg'=>'mensaje error'),'body'=>array('success')));
+        return response()->json(array('head'=> array('success'=>'yes', 'msg'=>'mensaje error'),'body'=>array('success register')));
         /*
         $user = new User;
         $user->email = $_POST['email'];
