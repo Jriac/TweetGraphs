@@ -9,24 +9,25 @@
     <link rel="stylesheet" href="css/normalize.css">
     <script src="/js/jquery-1.11.3.min.js" type="text/javascript"></script>
     <script src="/js/function_submit.js" type="text/javascript"></script>
+    <script src="/js/function_login.js" type="text/javascript"></script>
 
     <script src="/bower_components/angular/angular.js"></script>
-<script src="/bower_components/angular-resource/angular-resource.js"></script>
-<script src="/js/bootcamp.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.js"></script>
+    <script src="/js/bootcamp.js"></script>
     <link rel="stylesheet" href="css/style.css">
 
     <script>
         function check_pass() {
-            var pass1 = document.f1.pwd;
+            var pass1 = document.f1.password;
             var pass2 = document.f1.pwd2;
             var goodColor = "#66cc66";
             var badColor = "#ff6666";
             if (pass1.value == pass2.value) {
                 pass2.style.backgroundColor = goodColor;
-                document.f1.submit.disabled = false;
+                document.f1.submit_register.disabled = false;
             } else {
                 pass2.style.backgroundColor = badColor;
-                document.f1.submit.disabled = true;
+                document.f1.submit_register.disabled = true;
 
             }
         }
@@ -109,7 +110,7 @@
             <div id="login">
                 <h1>Iniciar Sesión</h1>
 
-                <form action="/formlogin" method="post">
+                <form method="post">
 
                     <div class="field-wrap">
                         <label>
@@ -127,7 +128,7 @@
 
                     <p class="forgot"><a href="#">¿Has olvidado tu contraseña?</a></p>
 
-                    <button class="button button-block" />Acceder</button>
+                    <button ng-disabled="f1.$invalid" id="submit_login" class="button button-block" />Acceder</button>
 
                 </form>
 
