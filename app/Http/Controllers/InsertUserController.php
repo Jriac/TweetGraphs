@@ -4,7 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-
+use Request;
 class InsertUserController extends Controller {
 
     /**
@@ -12,14 +12,20 @@ class InsertUserController extends Controller {
      */
     public function registerUser()
     {
-        $respuesta = array("header" => array("success" => "yes", "msg" => "mensaje error"), "body" => array("asas"));
-        echo response()->json($respuesta);
-        /*
-        $user = new UserModel;
+        /*$respuesta = array("header" => array("success" => "yes", "msg" => "mensaje error"), "body" => array("asas"));
+        echo response()->json($respuesta);*/
+        
+        $mail = Request::input('name');
+        $password = Request::input('password');
+        var_dump($mail);
+        var_dump($password);
+        /*$user = new UserModel;
         $user->email = $_POST['email'];
-        $password = $_POST['password'];
+        $password = $_POST['password'];*/
 
-        $password = "1234";
+        
+
+        /*$password = "1234";
         if (defined('CRYPT_BLOWFISH') && CRYPT_BLOWFISH) {
             $user->password = crypt($password, '$2y$07$esteesuntextoaleatoreo$');
         }
@@ -28,7 +34,7 @@ class InsertUserController extends Controller {
             $respuesta = array();
             return response()->json($respuesta);
             return view('registerJCN')->with('exists', true);
-        }*/
+        }/*
     }
 
 

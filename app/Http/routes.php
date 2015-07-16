@@ -13,7 +13,7 @@
 
 Route::get('/', 'WelcomeController@index');
 
-Route::get('home', 'HomeController@index');
+Route::get('home', ['middleware' => 'auth','uses'=>'HomeController@index']);
 
 Route::get('prueba','UserController@prueba');
 
@@ -33,8 +33,8 @@ Route::resource('testsclass','TestclassController');
 Route::get('/recover','RecoverController@index');
 
 
-Route::resource('/form/register', 'InsertUserController@registerUser');
-Route::get('/register', 'RegisterController');
+Route::post('/form/register', 'UserController@RegisterUser');
+Route::get('/register', 'RegisterController@index');
 
 /*
  * Route::group(['middleware' => 'auth'], function() );
