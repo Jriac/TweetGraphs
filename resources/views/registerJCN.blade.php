@@ -28,9 +28,19 @@
             } else {
                 pass2.style.backgroundColor = badColor;
                 document.f1.submit_register.disabled = true;
-
             }
         }
+    
+ function changefocus(){
+    document.getElementById('email').style.background = "rgba(19, 35, 47, 0.1)";
+ }
+
+
+        function change_background() {
+            document.f2.email_login.style.backgroundColor = "rgba(19,35,47,0.1)";
+            document.f2.password_login.style.backgroundColor = "rgba(19,35,47,0.1)";
+        }
+
     </script>
 
 </head>
@@ -50,7 +60,7 @@
 
                 <form ng-submit="submit()" name="f1">
 
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden"  name="_token" value="{{ csrf_token() }}">
 
                     <div class="top-row">
                         <div class="field-wrap">
@@ -58,6 +68,7 @@
                                 NOMBRE<span class="req">*</span>
                             </label>
                             <input type="text" name="username" ng-model="user.nom" required autocomplete="off" />
+                            
 
                         </div>
 
@@ -65,16 +76,16 @@
                             <label>
                                 APELLIDO<span class="req">*</span>
                             </label>
-                            <input type="text" name="apellido" ng-model="user.apellido" required autocomplete="off" />
+                            <input type="text" id="ap" name="apellido" ng-model="user.apellido" required autocomplete="off" />
                         </div>
                     </div>
 
                     <div class="field-wrap">
                         <label>
-                            EMAIL<span class="req">*</span>
+                            EMAIL<span class="req">*</span><span id="prob" class="probl"></span>
                         </label>
-                        <input type="email" name="email" id="email" ng-model="user.email" required autocomplete="off" />
-
+                        <input type="email" name="email" id="email" onfocus="changefocus()" ng-model="user.email" required autocomplete="off" />
+                        
                     </div>
 
 
@@ -109,21 +120,20 @@
 
             <div id="login">
                 <h1>Iniciar Sesión</h1>
-
-                <form method="post">
+                <form method="post" name="f2">
 
                     <div class="field-wrap">
                         <label>
                             EMAIL<span class="req">*</span>
                         </label>
-                        <input type="email" name="email_login" id="email_login" required autocomplete="off" />
+                        <input type="email" name="email_login" id="email_login" onfocus="change_background()" required autocomplete="off" />
                     </div>
 
                     <div class="field-wrap">
                         <label>
                             CONTRASEÑA<span class="req">*</span>
                         </label>
-                        <input type="password" name="password_login" id="password_login" required autocomplete="off" />
+                        <input type="password" name="password_login" id="password_login" onfocus="change_background()" required autocomplete="off" />
                     </div>
 
                     <p class="forgot"><a href="http://bootcamp.incubio.com:8080/recover_pass">¿Has olvidado tu contraseña?</a></p>
