@@ -34,7 +34,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	}
 
 	static public function UpdatePassword($mail,$password){
-		DB::update('update users set password = ? where mail = ?',array($password,$mail));
+		$n_rows = DB::update('update users set password = ? where mail = ?',array($password,$mail));
+		return $n_rows;
 	}
 
 

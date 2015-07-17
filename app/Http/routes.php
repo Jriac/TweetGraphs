@@ -33,7 +33,7 @@ Route::resource('trendyLista','TrendsViewController');
 Route::resource('testsclass','TestclassController');
 Route::get('/recover','RecoverController@index');
 
-Route::get('test','UserController@LogIn');
+Route::get('test','UserController@NewPassword');
 
 Route::post('/form/register', 'UserController@RegisterUser');
 

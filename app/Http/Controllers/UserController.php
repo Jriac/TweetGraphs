@@ -134,15 +134,34 @@ class UserController extends Controller {
 		else return ResponseController::CreateJSON("NO","ERROR","WRONG MAIL");	
 	}
 
+	private function NewPasswordResponse($res){
+		if($res){
+		   return ResponseController::CreateJSON("YES","PASSWORD CHANGED", "PASSWORD UPDATED");	
+		}
+		else return ResponseController::CreateJSON("NO","ERROR","ERROR UPDATING PASSWORD");	
+	}
+
 	public function NewPassword(){
+		$user = Auth::user();
 		$new_password = $_POST['password'];
+		$new_password = $this->CryptData($new_password);
+		$rows_affected = User::UpdatePassword($user->mail,$new_password);
+		$response;
+		if($rows_affected == 1){
+			$response = $this->NewPasswordResponse(true);
+		}
+		else $response = $this->NewPasswordResponse(false);
+		return response()->json($response);
+
 		
 	}
 
 	public function RecoverySolicited(){
 		$hash = $_GET['hash'];
-		PasswordRecovery::RecoverUsed($hash);
-		return view('change_password');
+		$mail = PasswordRecovery::RecoverUsed($hash);
+		$user_id = User::Exists($mail);
+		Auth::loginUsingId($user_id);
+		return redirect('change_password');
 	}
 
 	private function SendRecoverMail($mail){
