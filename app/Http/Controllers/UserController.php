@@ -49,9 +49,9 @@ class UserController extends Controller {
 		$mail = $_POST['email'];
         $password = $_POST['password'];
         $name = $_POST['name'];
-        $password = $this->CryptPassword($password);
-        $result = $this->AddToUsers($mail,$password,$name);
-        $response = $this->RegisterResponse($result);
+/*        $password = $this->CryptPassword($password);
+        $result = $this->AddToUsers($mail,$password,$name);*/
+        $response = $this->RegisterResponse(false);
 
         return response()->json($response);
 

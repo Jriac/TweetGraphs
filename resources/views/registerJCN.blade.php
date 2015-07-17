@@ -28,11 +28,13 @@
             } else {
                 pass2.style.backgroundColor = badColor;
                 document.f1.submit_register.disabled = true;
-
             }
         }
-    </script>
-
+    
+ function changefocus(){
+    document.getElementById('email').style.background = "rgba(19, 35, 47, 0.1)";
+ }
+</script>
 </head>
 
 <body>
@@ -50,7 +52,7 @@
 
                 <form ng-submit="submit()" name="f1">
 
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden"  name="_token" value="{{ csrf_token() }}">
 
                     <div class="top-row">
                         <div class="field-wrap">
@@ -58,6 +60,7 @@
                                 NOMBRE<span class="req">*</span>
                             </label>
                             <input type="text" name="username" ng-model="user.nom" required autocomplete="off" />
+                            
 
                         </div>
 
@@ -65,16 +68,16 @@
                             <label>
                                 APELLIDO<span class="req">*</span>
                             </label>
-                            <input type="text" name="apellido" ng-model="user.apellido" required autocomplete="off" />
+                            <input type="text" id="ap" name="apellido" ng-model="user.apellido" required autocomplete="off" />
                         </div>
                     </div>
 
                     <div class="field-wrap">
                         <label>
-                            EMAIL<span class="req">*</span>
+                            EMAIL<span class="req">*</span><span id="prob" class="probl"></span>
                         </label>
-                        <input type="email" name="email" id="email" ng-model="user.email" required autocomplete="off" />
-
+                        <input type="email" name="email" id="email" onfocus="changefocus()" ng-model="user.email" required autocomplete="off" />
+                        
                     </div>
 
 
