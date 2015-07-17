@@ -59,7 +59,6 @@ class UserController extends Controller {
 			$user->name = $name;
 			$user->save();
 			$this->SendValidationMail($mail);
-		    Auth::user($user);
 			return true;
 		}
 
@@ -97,8 +96,8 @@ class UserController extends Controller {
 
 	private function IsValidUser($mail,$password){
 		$user_id = User::Exists($mail);
-
-		if($user_id == -1){
+		$user = User::find($user_id);
+		if($user_id == -1 or ($user->status == 'unactive') ){
 			return false;
 		}
 
@@ -111,7 +110,7 @@ class UserController extends Controller {
 		if($res){
 		   return ResponseController::CreateJSON("YES","LOGGED IN","USER LOGGED IN CORRECTLY");	
 		}
-		else return ResponseController::CreateJSON("NO","ERROR","WRONG MAIL OR PASSWORD");	
+		else return ResponseController::CreateJSON("NO","ERROR","WRONG MAIL OR PASSWORD / USER UNACTIVE");	
 	}
 
 	public function LogIn(){

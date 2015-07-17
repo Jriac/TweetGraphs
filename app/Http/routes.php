@@ -41,7 +41,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/v1/user/profile', function () {
     });
 
-    Route::get('/home','HomeController@index');
+    Route::get('home','HomeController@index');
 });
 
 
