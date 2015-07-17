@@ -11,7 +11,7 @@ $(function function_submit() {
                     document.getElementById('email').style.backgroundColor =  "#ff6666";
                     $('input[name=email]').val('');
                 } else if(data.body == "USER ADDED TO DB CORRECTLY"){
-                    window.location.replace("http://bootcamp.incubio.com:8080/home");
+                    window.location.replace("http://bootcamp.incubio.com:8080/#login");
                 }
             }
         });
