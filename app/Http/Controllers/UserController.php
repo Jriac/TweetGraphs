@@ -33,7 +33,7 @@ class UserController extends Controller {
 
         $hash = strtr($hash, array('.' => 'z'));
 
-        $URL = "http://bootcamp.incubio.com:8080/activate";
+        $URL = "http://bootcamp.incubio.com:8080/v1/user/activate";
 
         $URL = $URL."?hash=".$hash; 
 
@@ -174,7 +174,7 @@ class UserController extends Controller {
 
         $hash = strtr($hash, array('.' => 'z'));
 
-        $URL = "http://bootcamp.incubio.com:8080/recoverpass";
+        $URL = "http://bootcamp.incubio.com:8080/v1/user/change_password";
 
         $URL = $URL."?hash=".$hash; 
 
