@@ -159,7 +159,7 @@ class UserController extends Controller {
 		$mail = PasswordRecovery::RecoverUsed($hash);
 		$user_id = User::Exists($mail);
 		Auth::loginUsingId($user_id);
-		return redirect('change_password');
+		return redirect('/v1/user/change_password');
 	}
 
 	private function SendRecoverMail($mail){

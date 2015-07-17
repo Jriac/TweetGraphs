@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', function(){
+	return view('registerJCN');
+});
 
-Route::get('home', ['middleware' => 'auth','uses'=>'HomeController@index']);
+//Route::get('home', ['middleware' => 'auth','uses'=>'HomeController@index']);
 
 Route::get('prueba','UserController@prueba');
 
@@ -35,9 +37,27 @@ Route::get('test','UserController@RegisterUser');
 
 Route::get('/recover','RecoverController@index');
 
-Route::post('/form/sendEmail','UserController@SendRecoverPassword');
-Route::post('/form/register', 'UserController@RegisterUser');
-Route::post('/form/login', 'UserController@LogIn');
+
+Route::post('/v1/user/register','UserController@RegisterUser');
+Route::post('/v1/user/login','UserController@LogIn');
+Route::get('/v1/user/recover_pass',function(){
+	return view('PasswordRecover');
+});
+
+
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/v1/user/change_password',function(){
+	return view('change_password');
+	});
+
+    Route::get('/v1/user/profile', function () {
+    });
+
+    Route::get('/home','HomeController@index');
+});
+
+
 
 
 /*
