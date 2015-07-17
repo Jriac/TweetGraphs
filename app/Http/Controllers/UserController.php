@@ -59,6 +59,7 @@ class UserController extends Controller {
 			$user->name = $name;
 			$user->save();
 			$this->SendValidationMail($mail);
+		    Auth::user($user);
 			return true;
 		}
 
