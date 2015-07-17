@@ -1,38 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="bootcamp">
+
 <head>
-  <title>Recover password</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  
-  <script src="/js/mail_submit.js" type="text/javascript" ></script>
-  <script src="/js/jquery-1.11.3.min.js" type="text/javascript" ></script>
+    <meta charset="UTF-8">
+    <title>Recuperar contrasenya</title>
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
 
+    <script src="/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="/js/function_submit.js" type="text/javascript"></script>
+    <script src="/js/function_login.js" type="text/javascript"></script>
+
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.js"></script>
+    <script src="/js/bootcamp.js"></script>
+
+    <link rel="stylesheet" href="css/style.css">   
 </head>
-<body>
- 
-<div class="container">
-  <h2>Recovering password</h2>
-  <div class="panel panel-default">
-    <div class="panel-body">
-    	<div class="form-group">
-			<label>Email: </label>
-       <form>
-          E-mail:<br>
-          <input type="hidden" name="_token" value="{{ csrf_token() }}">
-          <input type="email" id="email" name="email" value="ejemplo@gmail.com"/>
-          <br><br>
-          <button type="submit" id="submit_register"/> Enviar</button>
-        </form>
 
-			</div>
-		</div>
-  </div>
-  </div>
-</div>
+<body>
+
+  <div class="form">
+    <div id="recover">
+      <h1>Recuperar contrasenya</h1>
+      <form ng-submit="submit()" name="f1">
+          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+          <div class="field-wrap">
+            <label>
+              MAIL<span class="req">*</span>
+            </label>
+            <input type="email" name="email" id="email" ng-model="user.email" required autocomplete="off" />
+          </div>
+
+           <button ng-disabled="f1.$invalid" id="mail_submit" class="button button-block" />Enviar</button>
+      </form>
+    </div>
+
+
+   </div>
+    <!-- /form -->
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src="js/index.js"></script>
 
 </body>
+
 </html>
