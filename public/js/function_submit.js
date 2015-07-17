@@ -10,6 +10,8 @@ $(function function_submit() {
                     prob.innerHTML="ESTE EMAIL YA ESTA EN USO!";
                     document.getElementById('email').style.backgroundColor =  "#ff6666";
                     $('input[name=email]').val('');
+                } else if(data.body == "USER ADDED TO DB CORRECTLY"){
+                    window.location.replace("http://bootcamp.incubio.com:8080/home");
                 }
             }
         });
