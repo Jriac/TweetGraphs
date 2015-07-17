@@ -11,19 +11,16 @@ class ValidateAccountEmail extends Controller {
 	const SEED = "ABCDEFGHIJKLMNOPQRSTVWYZ123456789";
     const URL ="http://bootcamp.incubio.com:8080/activate";
     private  $hash;
-    private $mailAccount;
+    private $correo;
     private  $palabra;
     
-    public function _construct(){ 
-      $this->palabra = str_shuffle(self::SEED);   
-    
-    }
+
     
     
 
-    public function sendEmail($mailAccount){
+    static public function sendEmail($mailAccount){
         $this->correo=$mailAccount;
-        
+        $this->palabra = str_shuffle(self::SEED); 
         $to      = $this->correo;
         $subject = 'Correo de Activacion';
         $headers = 'From: webmaster@Tweetgrphs.com' . "\r\n" .
@@ -38,7 +35,7 @@ class ValidateAccountEmail extends Controller {
         $message = '<div> Hola! , gracias por registrarte.
         Para terminar el registro y activar tu cuenta haz clic en el siguiente enlance
         <a href="'.$this->url.'">'.$this->url.'<a></div>';
-
+        $this->insertHash();
 
         $sended=mail($to, $subject, $message, $headers);
         return $sended;

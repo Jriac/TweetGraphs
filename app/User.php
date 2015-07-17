@@ -27,18 +27,24 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	
 	static public function UpdateAsActive($mail){
 		DB::update('update users set status = ? where mail = ?',array('active',$mail));
+		$user_id = DB::select('select id from users where mail = ?',array($mail));
+		$user_id = $user_id[0]->id;
+		return $user_id;
 
 	}
 
 	static public function UpdatePassword($mail,$password){
-		DB::update('update users set password = ? where mail = ?',array($password,$mail));
+		$n_rows = DB::update('update users set password = ? where mail = ?',array($password,$mail));
+		return $n_rows;
 	}
 
 
 	static public function CheckPassword($id,$password){
 		$user = User::find($id);
-		$result = strcmp($password,$user->password);
-		if($result == 0) return true;
+		if(crypt($password, $user->password) == $user->password){
+			return true;
+		} 
 		else return false;
+		
 	}
 }

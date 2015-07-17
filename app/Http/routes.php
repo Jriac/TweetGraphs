@@ -24,11 +24,14 @@ Route::controllers([
 
 Route::get('/register','RegisterController@index');
 
+Route::get('activate','UserController@ValidateUser');
+
 Route::resource('item','ItemController');
 Route::resource('trends','TrendsController');
 Route::resource('trendyLista','TrendsViewController');
 Route::resource('testsclass','TestclassController');
 
+Route::get('test','UserController@NewPassword');
 
 Route::get('/recover','RecoverController@index');
 
