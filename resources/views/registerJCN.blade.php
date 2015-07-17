@@ -31,6 +31,12 @@
 
             }
         }
+
+        function change_background() {
+            document.f2.email_login.style.backgroundColor = "rgba(19,35,47,0.1)";
+            document.f2.password_login.style.backgroundColor = "rgba(19,35,47,0.1)";
+        }
+
     </script>
 
 </head>
@@ -109,21 +115,20 @@
 
             <div id="login">
                 <h1>Iniciar Sesión</h1>
-
-                <form method="post">
+                <form method="post" name="f2">
 
                     <div class="field-wrap">
                         <label>
                             EMAIL<span class="req">*</span>
                         </label>
-                        <input type="email" name="email_login" id="email_login" required autocomplete="off" />
+                        <input type="email" name="email_login" id="email_login" onfocus="change_background()" required autocomplete="off" />
                     </div>
 
                     <div class="field-wrap">
                         <label>
                             CONTRASEÑA<span class="req">*</span>
                         </label>
-                        <input type="password" name="password_login" id="password_login" required autocomplete="off" />
+                        <input type="password" name="password_login" id="password_login" onfocus="change_background()" required autocomplete="off" />
                     </div>
 
                     <p class="forgot"><a href="#">¿Has olvidado tu contraseña?</a></p>
