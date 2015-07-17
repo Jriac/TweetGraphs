@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\MongoPrueba;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller {
@@ -49,7 +49,10 @@ class ItemController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		$test = new MongoPrueba;
+		$test->nombre = "Xavier";
+		$test->apellido = "Cervilla";
+		$test->save();
 	}
 
 	/**

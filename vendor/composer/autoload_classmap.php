@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'CreateMongoPruebasTable' => $baseDir . '/database/migrations/2015_07_17_150933_create_mongo_pruebas_table.php',
     'CreatePasswordRecoveriesTable' => $baseDir . '/database/migrations/2015_07_16_192417_create_password_recoveries_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
