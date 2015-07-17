@@ -16,7 +16,7 @@ Route::get('/', function(){
 });
 
 Route::get('/v1/user/activate','UserController@ValidateUser');
-Route::get('/v1/user/recover_pass',function(){
+Route::get('/recover_pass',function(){
 	return view('PasswordRecover');
 });
 
