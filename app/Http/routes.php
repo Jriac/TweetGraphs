@@ -36,7 +36,7 @@ Route::post('/v1/user/send_recover_mail','UserController@SendRecoverPassword');
 
 Route::group(['middleware' => 'auth'], function () {
 	 Route::get('/v1/user/new_password', function () {
-	 	return view('pass_edit');
+	 	return view('PassEdit');
     });
     Route::get('/v1/user/profile', function () {
     });
