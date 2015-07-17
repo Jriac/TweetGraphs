@@ -126,7 +126,7 @@
                         <input type="password" name="password_login" id="password_login" required autocomplete="off" />
                     </div>
 
-                    <p class="forgot"><a href="#">¿Has olvidado tu contraseña?</a></p>
+                    <p class="forgot"><a href="http://bootcamp.incubio.com:8080/v1/user/recover_pass">¿Has olvidado tu contraseña?</a></p>
 
                     <button id="submit_login" class="button button-block" />Acceder</button>
 
