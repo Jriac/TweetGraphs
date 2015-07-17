@@ -19,6 +19,7 @@ Route::get('/v1/user/activate','UserController@ValidateUser');
 Route::get('/recover_pass',function(){
 	return view('PasswordRecover');
 });
+Route::get('/v1/user/change_password','UserController@RecoverySolicited');
 
 Route::resource('item','ItemController');
 Route::resource('trends','TrendsController');
@@ -34,14 +35,15 @@ Route::post('/v1/user/send_recover_mail','UserController@SendRecoverPassword');
 
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/v1/user/change_password',function(){
-	return view('change_password');
-	});
-
+	 Route::get('/v1/user/new_password', function () {
+	 	return view('pass_edit');
+    });
     Route::get('/v1/user/profile', function () {
     });
 
     Route::get('home','HomeController@index');
+
+    Route::post('/v1/user/update_password','UserController@NewPassword');
 });
 
 
