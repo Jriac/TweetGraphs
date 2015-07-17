@@ -7,7 +7,7 @@
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
 
     <script src="/js/jquery-1.11.3.min.js" type="text/javascript"></script>
-    <script src="/js/function_submit.js" type="text/javascript"></script>
+    <script src="/js/mail_submit.js" type="text/javascript"></script>
     <script src="/js/function_login.js" type="text/javascript"></script>
 
     <script src="/bower_components/angular/angular.js"></script>
