@@ -31,7 +31,7 @@ Route::resource('trends','TrendsController');
 Route::resource('trendyLista','TrendsViewController');
 Route::resource('testsclass','TestclassController');
 
-Route::get('test','UserController@NewPassword');
+Route::get('test','UserController@RegisterUser');
 
 Route::get('/recover','RecoverController@index');
 

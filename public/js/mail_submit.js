@@ -7,7 +7,7 @@ $(function function_submit() {
         $.ajax({
             type: "POST",
             url: '/form/sendEmail',
-            data: {'email':$('input[name=email]').val(), '_token':$('input[name=_token]').val()},
+            data: {'mail':$('input[name=email]').val(), '_token':$('input[name=_token]').val()},
         });
         return false;
     });

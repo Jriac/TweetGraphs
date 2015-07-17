@@ -69,9 +69,7 @@ class UserController extends Controller {
 		if (defined('CRYPT_BLOWFISH') && CRYPT_BLOWFISH) {
 			$salt = substr(base64_encode(openssl_random_pseudo_bytes('22')), 0, 22);
 			$salt = strtr($salt, array('+' => '.'));
-			var_dump($salt);
 			$encripted_data = crypt($data, '$2y$10$' . $salt);
-			var_dump($encripted_data);
             return $encripted_data;
         }
 	}
