@@ -5,6 +5,7 @@ $(function function_submit() {
             url: '/v1/user/register',
             data: {'name':$('input[name=username]').val(), 'mail':$('input[name=email]').val(), 'password':$('input[name=password]').val(), '_token':$('input[name=_token]').val()},
             success: function(data) {
+                alert(data.body);
                 if (data.body == "USER ALREADY EXISTS IN DB"){
                   var prob =  document.getElementById('prob');
                     prob.innerHTML="ESTE EMAIL YA ESTA EN USO!";
