@@ -1,6 +1,6 @@
 $(function function_submit() {
-    $("#submit_register").click(function() {
-        var email = $("input#email").val();
+    $("#mail_submit").click(function() {
+        var mail = $("input#email").val();
         if (email == "") {
             return false;
         }
