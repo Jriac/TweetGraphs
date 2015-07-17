@@ -22,7 +22,6 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
-
 Route::get('/register','RegisterController@index');
 
 Route::resource('item','ItemController');
@@ -31,8 +30,8 @@ Route::resource('trendyLista','TrendsViewController');
 Route::resource('testsclass','TestclassController');
 Route::get('/recover','RecoverController@index');
 
-
 Route::post('/form/register', 'UserController@RegisterUser');
+Route::post('/form/login', 'UserController@LogIn');
 
 
 /*

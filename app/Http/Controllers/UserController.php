@@ -46,7 +46,7 @@ class UserController extends Controller {
 
 	public function RegisterUser(){
 
-		$mail = $_POST['email'];
+		$mail = $_POST['mail'];
         $password = $_POST['password'];
         $name = $_POST['name'];
 /*        $password = $this->CryptPassword($password);
