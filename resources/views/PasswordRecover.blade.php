@@ -8,7 +8,8 @@
 
     <script src="/js/jquery-1.11.3.min.js" type="text/javascript"></script>
     <script src="/js/mail_submit.js" type="text/javascript"></script>
-    
+
+    <script src="/js/function_login.js" type="text/javascript"></script>
 
     <script src="/bower_components/angular/angular.js"></script>
     <script src="/bower_components/angular-resource/angular-resource.js"></script>

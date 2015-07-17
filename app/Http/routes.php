@@ -15,34 +15,21 @@ Route::get('/', function(){
 	return view('registerJCN');
 });
 
-//Route::get('home', ['middleware' => 'auth','uses'=>'HomeController@index']);
-
-Route::get('prueba','UserController@prueba');
-
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
-
-Route::get('/register','RegisterController@index');
-
-Route::get('activate','UserController@ValidateUser');
+Route::get('/v1/user/activate','UserController@ValidateUser');
+Route::get('/recover_pass',function(){
+	return view('PasswordRecover');
+});
 
 Route::resource('item','ItemController');
 Route::resource('trends','TrendsController');
 Route::resource('trendyLista','TrendsViewController');
 Route::resource('testsclass','TestclassController');
 
-Route::get('test','UserController@RegisterUser');
-
-Route::get('/recover','RecoverController@index');
-
 
 Route::post('/v1/user/register','UserController@RegisterUser');
 Route::post('/v1/user/login','UserController@LogIn');
-Route::get('/v1/user/recover_pass',function(){
-	return view('PasswordRecover');
-});
+Route::post('/v1/user/send_recover_mail','UserController@SendRecoverPassword');
+
 
 
 
@@ -58,9 +45,9 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 
+Route::controllers([
+	'auth' => 'Auth\AuthController',
+	'password' => 'Auth\PasswordController',
+]);
 
-
-/*
- * Route::group(['middleware' => 'auth'], function() );
- */
 

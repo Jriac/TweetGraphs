@@ -14,10 +14,10 @@ class CreatePasswordRecoveriesTable extends Migration {
 	{
 		Schema::create('password_recoveries', function(Blueprint $table)
 		{
-			$table->string('mail')->unique();
+			$table->string('mail');
 			$table->string('hash',60);
 			$table->timestamps();
-			$table->primary('mail');
+			$table->primary(['mail','hash']);
 			$table->foreign('mail')->references('mail')->on('users');
 		});
 	}
