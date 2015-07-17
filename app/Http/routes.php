@@ -28,8 +28,11 @@ Route::resource('item','ItemController');
 Route::resource('trends','TrendsController');
 Route::resource('trendyLista','TrendsViewController');
 Route::resource('testsclass','TestclassController');
+
+
 Route::get('/recover','RecoverController@index');
 
+Route::post('/form/sendEmail','UserController@SendRecoverPassword');
 Route::post('/form/register', 'UserController@RegisterUser');
 Route::post('/form/login', 'UserController@LogIn');
 
