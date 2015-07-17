@@ -23,9 +23,9 @@
        <form>
           E-mail:<br>
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
-          <input type="email" id="email "name="email" value="your email"/><br>
+          <input type="email" id="email" name="email" value="ejemplo@gmail.com"/>
+          <br><br>
           <button type="submit" id="submit_register"/> Enviar</button>
-          <input type="reset" value="Reset"/>
         </form>
 
 			</div>
