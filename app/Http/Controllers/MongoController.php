@@ -15,9 +15,10 @@ class MongoController extends Eloquent {
     protected $dataBase = 'bootcamp';
     
     
-    static public function InsertTuitAndHashtag($hashtag,$tuit){
+    static public function InsertTuitAndHashtag(){
+        $collection=$_POST['hashtag'];
+        $tuit = $_POST['tuit'];
         $db = $connection->selectDB($dataBase);
-        $collection=$hashtag;
         
         $collectionExists = $db->collectionExists($collection);
         if (collectionExists == false) {
@@ -26,7 +27,8 @@ class MongoController extends Eloquent {
 		$collection->insert($tuit);
 	}
     
-    static public function InsertTuit($tuit){
+    static public function InsertTuit(){
+        $tuit = $_POST['tuit']
         $db = $connection->selectDB($dataBase);
         $db->createCollection("Tuits", null);
         $collection=$db->getCollection("Tuits");
