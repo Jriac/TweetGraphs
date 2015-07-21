@@ -19,6 +19,7 @@ class FilterTrackConsumer extends OauthPhirehose
      *
      * @param string $status
      */
+  //  protected $conect = new MongoClient("mongodb://example.com:27017");
     protected $myTrackWords = array('sterling', 'blackmetal', 'Ernest Hemmingway', 'FelizMartes');
     public function enqueueStatus($status)
     {
@@ -27,8 +28,8 @@ class FilterTrackConsumer extends OauthPhirehose
          * NOTE: You should NOT be processing tweets at this point in a real application, instead they should be being
          *       enqueued and processed asyncronously from the collection process.
          */
-        $data = json_decode($status, true);
-       //var_dump($data);
+       // $data = json_decode($status, true);
+       var_dump($status);
 
        if (is_array($data) && isset($data['user']['screen_name'])) {
             print $data['user']['screen_name'] . ': ' . urldecode($data['text']) . "\n";
