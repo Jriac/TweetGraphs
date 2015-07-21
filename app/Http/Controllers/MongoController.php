@@ -21,7 +21,7 @@ class MongoController extends Eloquent {
         
         $collectionExists = $db->collectionExists($collection);
         if (collectionExists == false) {
-            db.createCollection($collection, null);
+            db->createCollection($collection, null);
         }
 		$collection->insert($tuit);
 	}
