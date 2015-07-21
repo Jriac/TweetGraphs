@@ -10,13 +10,13 @@ use Illuminate\Http\Request;
 use Jenssegers\MongoDB\Model as Eloquent;
 
 class MongoController extends Eloquent {
-
+    
 	protected $connection = 'mongodb';
-    //protected $collection = 'bootcamp';
+    protected $dataBase = 'bootcamp';
     
     
     static public function InsertTuit($hashtag,$tuit){
-        $db = $connection->selectDB("bootcamp");
+        $db = $connection->selectDB($dataBase);
         $collection=$hashtag;
         
         $collectionExists = $db->collectionExists($collection);
@@ -27,5 +27,4 @@ class MongoController extends Eloquent {
 	}
     
 }
-
 ?>
