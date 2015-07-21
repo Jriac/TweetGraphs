@@ -15,14 +15,21 @@ class MongoController extends Eloquent {
     protected $dataBase = 'bootcamp';
     
     
-    static public function InsertTuit($hashtag,$tuit){
+    static public function InsertTuitAndHashtag($hashtag,$tuit){
         $db = $connection->selectDB($dataBase);
         $collection=$hashtag;
         
         $collectionExists = $db->collectionExists($collection);
         if (collectionExists == false) {
-            db->createCollection($collection, null);
+            $db->createCollection($collection, null);
         }
+		$collection->insert($tuit);
+	}
+    
+    static public function InsertTuit($tuit){
+        $db = $connection->selectDB($dataBase);
+        $db->createCollection("Tuits", null);
+        $collection=$db->getCollection("Tuits");
 		$collection->insert($tuit);
 	}
     
