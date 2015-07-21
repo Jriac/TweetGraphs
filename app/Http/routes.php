@@ -30,6 +30,7 @@ Route::resource('testsclass','TestclassController');
 Route::post('/v1/user/register','UserController@RegisterUser');
 Route::post('/v1/user/login','UserController@LogIn');
 Route::post('/v1/user/send_recover_mail','UserController@SendRecoverPassword');
+Route::resource('/v1/user/mongo','MongoController@InsertTuit');
 
 
 
