@@ -87,18 +87,23 @@ MongoClient.connect(url, function(err, db) {
 function trackTrends(woeids) {
     var palabras=[];
    // console.log(woeids);
-
+trends=[];
     for(var k = 0, len1=woeids.length; k < len1 ; k++ ){
 
       twit.get('trends/place.json', {id: woeids[k]}, function (err, data) {
-       //console.info(JSON.stringify(data));
+          console.log("________________________________________________");
+       console.info(JSON.stringify(data));
+          console.log("________________________________________________");
         //array de tags
         hashtagsTrends = JSON.parse(JSON.stringify(data));
         //console.log("Todos los datos recibidos");
         // console.info(hashtagsTrends);
-        trends = hashtagsTrends[0].trends;
-        //console.info("Solo los trends")
-        //console.log(trends);
+
+              trends = hashtagsTrends[0].trends;
+
+
+        console.info("Solo los trends")
+        console.log(trends);
         // console.log("usando...");
         //  console.log(k);
         // console.log(len1);
@@ -110,6 +115,7 @@ function trackTrends(woeids) {
         }
         console.log("palabras entrando en redis....");
           //console.log(palabras.join(","));
+          var client = redis.createClient();
           client.set('trends', palabras.join(","), function(err, reply) {
               console.log(reply);
           });
@@ -128,7 +134,7 @@ function trackTrends(woeids) {
 setInterval(function(){
 globalStream.destroy();
 
-    woeids=[1,753692,754542,766273,774508,773418,763246,765099,773964];
+    woeids=[1,753692,754542,766273,774508];
 
     trackTrends(woeids);
 
@@ -136,6 +142,7 @@ globalStream.destroy();
     console.info("empezando nuevo stream despues de los tags...");
     console.log("esto es el string de hashes...");
   //  console.log(trendsString);
+    var client = redis.createClient();
     client.get('trends', function(err, reply) {
         console.log(reply);
         connectStream(reply,db);
@@ -150,9 +157,9 @@ globalStream.destroy();
  Santander : 773964
 *
 * */
-    woeids=[1,753692,754542,766273,774508,773418,763246,765099,773964];
+    woeids=[1,753692,754542,766273,774508];
 
-
+    var client = redis.createClient();
     client.on('connect', function() {
         console.log('connected');
         trackTrends(woeids);
