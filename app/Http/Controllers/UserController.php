@@ -206,9 +206,11 @@ class UserController extends Controller {
 
 	private function NewHashtags($originalHashtags,$modifiedHashtags){
 		$nOriginal = count($originalHashtags);
+		$user = Auth::user();
+		$userId = $user->id;
 		if($nOriginal == 0){
 			foreach ($modifiedHashtags as $hashtag) {
-				$hashtag->text
+				AddUserHashtag($hashtag->text,$userId);
 			}
 		}
 	}
