@@ -45,6 +45,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('home','HomeController@index');
 
     Route::post('/v1/user/update_password','UserController@NewPassword');
+
+    Route::get('home/hash','UserController@GetUserHashtags');
 });
 
 

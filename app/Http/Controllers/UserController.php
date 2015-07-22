@@ -8,6 +8,9 @@ use App\ValidateUser;
 use App\PasswordRecovery;
 use Illuminate\Http\Request;
 
+use App\Hashtags;
+use App\UserHashtags;
+
 use Auth;
 
 use Mail;
@@ -201,7 +204,18 @@ class UserController extends Controller {
 		return response()->json($respuesta);
 	}
 
-
+	public function GetUserHashtags(){
+		$user = Auth::user();
+		$userId = $user->id;
+		$hashtagsId = UserHashtags::GetHashtagID($userId);
+		$userHashtags = Hashtags::GetHashtags($hashtagsId);
+		$return = array();
+		foreach ($userHashtags as $hashtag) {
+			$insert = array("text" => $hashtag);
+			array_push($return, $insert);
+		}
+		return response()->json($return);
+	}
 
 
 }

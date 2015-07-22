@@ -3,9 +3,10 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ValidateAccountEmail;
-
+use Auth;
 use Illuminate\Http\Request;
 
+use App\UserHashtags;
 class TestclassController extends Controller {
 
 	/**
@@ -36,9 +37,11 @@ class TestclassController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function test()
 	{
-		//
+		$hashtag = "#hola";
+		$user = Auth::user();
+		UserHashtags::AddUserHashtag($hashtag,$user->id);
 	}
 
 	/**
