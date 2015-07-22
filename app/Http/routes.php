@@ -21,6 +21,8 @@ Route::get('/recover_pass',function(){
 });
 Route::get('/v1/user/change_password','UserController@RecoverySolicited');
 Route::get('prueba','ItemController@create');
+
+
 Route::resource('item','ItemController');
 Route::resource('trends','TrendsController');
 Route::resource('trendyLista','TrendsViewController');
