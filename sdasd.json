@@ -1,0 +1,30 @@
+$ curl -XPUT 'http://localhost:9200/mongoindex/_mapping/tweet' -d '
+{
+    "person" : {
+        "properties" : {
+            "message" : {"type" : "string", "store" : true }
+        }
+    }
+}
+'
+
+
+"mappings": {
+    "person": {
+        "properties": {
+            "lastName": {
+                "index": "not_analyzed",
+                "type": "string"
+            },
+            "lastname": {
+                "type": "string"
+            },
+            "firstName": {
+                "type": "string"
+            },
+            "firstName": {
+                "type": "string"
+            }
+        }
+    }
+},
