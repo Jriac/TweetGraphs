@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePasswordResetsTable extends Migration {
+class CreateUserHashtagsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,12 @@ class CreatePasswordResetsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('password_resets', function(Blueprint $table)
+		Schema::create('user_hashtags', function(Blueprint $table)
 		{
-			$table->string('email')->index();
-			$table->string('token')->index();
-			$table->timestamp('created_at');
+			$table->integer('user_id');
+			$table->integer('hashtag_id');
+			$table->timestamps();
+			$table->primary(['user_id','hashtag_id']);
 		});
 	}
 
@@ -27,7 +28,7 @@ class CreatePasswordResetsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('password_resets');
+		Schema::drop('user_hashtags');
 	}
 
 }
