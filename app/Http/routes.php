@@ -15,10 +15,14 @@ Route::get('/', function(){
 	return view('registerJCN');
 });
 
+Route::get('/redis', 'RedisController@prueba');
+Route::get('/trendingtopics', 'RedisController@getAllTrends');
+
 Route::get('/v1/user/activate','UserController@ValidateUser');
 Route::get('/recover_pass',function(){
 	return view('PasswordRecover');
 });
+
 Route::get('/v1/user/change_password','UserController@RecoverySolicited');
 Route::get('prueba','ItemController@create');
 Route::resource('item','ItemController');
