@@ -128,7 +128,7 @@ function trackTrends(woeids) {
 setInterval(function(){
 globalStream.destroy();
 
-    woeids=[1,753692,754542,766273,774508];
+    woeids=[1,753692,754542,766273,774508,773418,763246,765099,773964];
 
     trackTrends(woeids);
 
