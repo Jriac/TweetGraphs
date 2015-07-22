@@ -23,11 +23,7 @@ class Kernel extends ConsoleKernel {
 	 */
 	protected function schedule(Schedule $schedule)
 	{
-		$schedule->call(function(){
-			$trends = new Trends;
-			$trends->GetTrends();
-			print ("Hola");
-		})->everyTenMinutes();
+		
 				 
 	}
 

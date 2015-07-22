@@ -31,5 +31,14 @@ class UserHashtags extends Model {
 		DB::delete('delete from user_hashtags where user_id = ? and hashtag_id = ?',array($userId,$hashtagId));
 	}
 
+	public static function GetHashtagID($userId){
+		$idArray = DB::select('select hashtag_id as id from user_hashtags where user_id = ?',array($userId));
+		$long = count($idArray);
+		for ($i=0; $i < $long ; $i++) { 
+			$idArray[$i] = $idArray[$i]->id;
+		}
+		return $idArray;
+	}
+
 
 }

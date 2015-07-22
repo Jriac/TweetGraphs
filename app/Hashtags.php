@@ -21,13 +21,21 @@ class Hashtags extends Model {
 			$newHashtag->hashtag = $hashtag;
 			$newHashtag->save();
 			$hashtag_id = $newHashtag->id;
-			var_dump($hashtag_id);
 			return $hashtag_id;
 	}
 
 	public static function DeleteHashtag($hashtagId){
 	   DB::delete('delete from hashtags where id = ?',array($hashtagId));
 		
+	}
+
+	public static function GetHashtags($hashtagsId){
+		$hashtags = array();
+		foreach ($hashtagsId as $id){
+			$hashtag = DB::select('select hashtag from hashtags where id = ?',array($id));
+			array_push($hashtags, $hashtag[0]->hashtag);
+		}
+		return $hashtags;
 	}
 
 }

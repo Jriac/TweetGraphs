@@ -39,9 +39,9 @@ class TestclassController extends Controller {
 	 */
 	public function test()
 	{
-		$hashtag = "#prueba";
+		$hashtag = "#hola";
 		$user = Auth::user();
-		UserHashtags::DeleteUserHashtag($hashtag,$user->id);
+		UserHashtags::AddUserHashtag($hashtag,$user->id);
 	}
 
 	/**
