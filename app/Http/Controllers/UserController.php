@@ -204,6 +204,24 @@ class UserController extends Controller {
 		return response()->json($respuesta);
 	}
 
+	private function NewHashtags($originalHashtags,$modifiedHashtags){
+		$nOriginal = count($originalHashtags);
+		if($nOriginal == 0){
+			foreach ($modifiedHashtags as $hashtag) {
+				$hashtag->text
+			}
+		}
+	}
+
+	public function ModifyUserHashtags(){
+		$originalHashtags = $_POST['original'];
+		$modifiedHashtags = $_POST['modified'];
+		$originalHashtags = json_decode($originalHashtags);
+		$modifiedHashtags = json_decode($modifiedHashtags);
+		$this->NewHashtags($originalHashtags,$modifiedHashtags);
+		$this->OldHashtags($originalHashtags,$modifiedHashtags);
+	}
+
 	public function GetUserHashtags(){
 		$user = Auth::user();
 		$userId = $user->id;
