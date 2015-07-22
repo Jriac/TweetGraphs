@@ -5,6 +5,7 @@
         "mongodb":"*",
         "ntwitter":"git://github.com/hardlifeofapo/ntwitter",
         "moment":"*",
-        "twitter":"*"
+        "twitter":"*",
+        "redis":"*"
     }
 }
