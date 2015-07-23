@@ -19,7 +19,9 @@ Route::get('/v1/user/activate','UserController@ValidateUser');
 Route::get('/recover_pass',function(){
 	return view('PasswordRecover');
 });
+
 Route::get('/v1/user/change_password','UserController@RecoverySolicited');
+Route::get('/v1/user/tags','UserController@GetUserHashtags');
 Route::get('prueba','ItemController@create');
 
 
