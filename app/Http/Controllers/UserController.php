@@ -210,7 +210,54 @@ class UserController extends Controller {
 		$userId = $user->id;
 		if($nOriginal == 0){
 			foreach ($modifiedHashtags as $hashtag) {
-				AddUserHashtag($hashtag->text,$userId);
+				UserHashtags::AddUserHashtag($hashtag->text,$userId);
+			}
+		}
+		else{
+			$i = 0;
+			foreach ($modifiedHashtags as $hashtag) {
+				$hashtag = $hashtag->text;
+				$yaExiste = false;
+				while ( $i < $nOriginal and !$yaExiste) {
+					$originalHashtag = $originalHashtags[$i]->text;
+					if ($hashtag == $originalHashtag) {
+						$yaExiste = true;
+					}
+					$i++;
+				}
+				if (!$yaExiste) {
+					UserHashtags::AddUserHashtag($hashtag,$userId);
+				}
+				$i = 0;
+			}
+		}
+	}
+
+	private function OldHashtags($originalHashtags,$modifiedHashtags){
+		$nModified = count($modifiedHashtags);
+		$user = Auth::user();
+		$userId = $user->id;
+		if($nModified == 0){
+			foreach ($originalHashtags as $hashtag) {
+				UserHashtags::DeleteUserHashtag($hashtag->text,$userId);
+			}
+		}
+		else{
+			$i = 0;
+			foreach ($originalHashtags as $hashtag) {
+				$hashtag = $hashtag->text;
+				$yaExiste = false;
+				while ( $i < $nModified and !$yaExiste) {
+					$modifiedHashtag = $modifiedHashtags[$i]->text;
+					if ($hashtag == $modifiedHashtag) {
+						$yaExiste = true;
+					}
+					$i++;
+				}
+				if (!$yaExiste) {
+					UserHashtags::DeleteUserHashtag($hashtag,$userId);
+				}
+				$i = 0;
 			}
 		}
 	}
@@ -234,7 +281,8 @@ class UserController extends Controller {
 			$insert = array("text" => $hashtag);
 			array_push($return, $insert);
 		}
-		return response()->json($return);
+		return json_encode($return);
+		//return response()->json($return);
 	}
 
 
