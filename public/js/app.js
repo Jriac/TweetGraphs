@@ -19,12 +19,12 @@ angular.module("plunker")
         };
     
     $scope.addtag = function(tag){
-        $http.post('/v1/user/update_password',$scope.tags);
+        $http.post('v1/user/tagsmodified',$scope.tags);
         
     }
     
        $scope.removetag = function(tag){
-        $http.post('/v1/user/update_password',$scope.tags);
+        $http.post('v1/user/tagsmodified',$scope.tags);
         
     }
     
