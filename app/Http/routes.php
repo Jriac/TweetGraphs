@@ -45,6 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
 	 	return view('PassEdit');
     });
     Route::get('/v1/user/profile', function () {
+    	
     });
 
     Route::get('home','HomeController@index');
@@ -53,6 +54,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::post('v1/user/tagsmodified','UserController@ModifyUserHashtags');
     Route::get('home/hash','UserController@GetUserHashtags');
+
 });
 
 
