@@ -56,10 +56,8 @@
             </p>
         </div>
         
-        <tags-input ng-model="ngTagsInput">
-            
+        <tags-input ng-model="tags">
         </tags-input>
-        @{{myData.fromServer}}
     </div>
     <!-- /container -->
 
