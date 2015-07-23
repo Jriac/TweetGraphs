@@ -20,6 +20,10 @@ Route::get('/recover_pass',function(){
 	return view('PasswordRecover');
 });
 
+Route::get('/graphs',function(){
+    return view('graphs');
+});
+
 Route::get('/v1/user/change_password','UserController@RecoverySolicited');
 Route::get('/v1/user/tags','UserController@GetUserHashtags');
 Route::get('prueba','ItemController@create');
@@ -29,7 +33,7 @@ Route::resource('item','ItemController');
 Route::resource('trends','TrendsController');
 Route::resource('trendyLista','TrendsViewController');
 Route::resource('testsclass','TestclassController');
-
+Route::post('/v1/graphs','ElasticquerysController@index');
 
 Route::post('/v1/user/register','UserController@RegisterUser');
 Route::post('/v1/user/login','UserController@LogIn');

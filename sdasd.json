@@ -30,3 +30,38 @@ curl -XPUT 'http://localhost:9200/_river/tweetindex/_meta' -d '{
 
 
  curl -XDELETE 'http://localhost:9200/_river/tweetindex/_riverstatus'
+
+
+
+
+
+
+
+
+
+
+
+{
+  "aggs": {
+    "tweets": {
+      "filter": {
+        "term": {
+          "tweet.entities.hashtags.text": "thankyou1dfor"
+        }
+      },
+      "aggs": {
+        "prices": {
+          "histogram": {
+            "field": "tweet.created_at",
+            "interval": 360000
+          }
+        }
+      }
+    }
+  },
+  "size": 0
+}
+
+
+
+
