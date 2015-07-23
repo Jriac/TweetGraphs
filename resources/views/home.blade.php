@@ -16,11 +16,11 @@
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="navbar.css" rel="stylesheet">
+    <!--<link href="navbar.css" rel="stylesheet">-->
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+    <!--<script src="../../assets/js/ie-emulation-modes-warning.js"></script>-->
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -34,7 +34,7 @@
         document.write('<base href="' + document.location + '" />');
 
     </script>
-    <link rel="stylesheet" href="style.css" />
+    <!--<link rel="stylesheet" href="style.css" />-->
     <link rel="stylesheet" href="http://mbenford.github.io/ngTagsInput/css/ng-tags-input.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
     <script src="http://mbenford.github.io/ngTagsInput/js/ng-tags-input.min.js"></script>
@@ -55,11 +55,11 @@
                 <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
             </p>
         </div>
-        
-        <tags-input ng-model="tags" on-tag-added="envia $tag.text" on-tag-removed="envia $tag.text">
-            <auto-complete source="loadTags($query)"></auto-complete>
-        </tags-input>
 
+
+        <tags-input ng-model="tags" data-ng-init="myData.doClick(item, $event)" on-tag-added="addtag($tag)" on-tag-removed="removetag($tag)" >
+            
+        </tags-input>
     </div>
     <!-- /container -->
 
@@ -71,7 +71,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+   <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->
 </body>
 
 </html>

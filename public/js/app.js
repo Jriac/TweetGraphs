@@ -1,26 +1,32 @@
-angular.module('app').controller(
-    'MainCtrl',
-    [
-        '$scope',
-        '$http',
-        '$ItemResource',
-        '$nombre_modelo',
-        function($scope, $http, ItemResource, nombre_modelo) {
-            $scope.tags = ItemResource.items;
-            ItemResource.getItems();
+
+angular.module("plunker", [ 'ngTagsInput' ]);
+
+
+angular.module("plunker")
+    .controller("MainCtrl", function ($scope, $http) {
+        $scope.myData = {};
+        $scope.myData.doClick= function (item, event) {
+            var responsePromise = $http.get("home/hash");
+            
+            responsePromise.success(function (data, status, headers, config) {
+                console.log(data[0].text);
+                $scope.tags = data;
+            });
+            responsePromise.error(function (data, status, headers, config) {
+                alert("AJAX failed!");
+            });
+            
+        };
     
-            $scope.loadTags = function(query){
-                return $http.get('v1/tag');
-            };
-            
-            $scope.envia = function(str_name){
-                nombre_modelo.CrearTag(str_name);
-            };
-            
-            $scope.elimina = function(str_name){
-                console.log('sha creat eliminat' + str_name);
-            nombre_modelo.EliminarTag(str_name);
-            };
-        }
-    ]
-);
+    $scope.addtag = function(tag){
+        $http.post('/v1/user/update_password',$scope.tags);
+        
+    }
+    
+       $scope.removetag = function(tag){
+        $http.post('/v1/user/update_password',$scope.tags);
+        
+    }
+    
+    });
+

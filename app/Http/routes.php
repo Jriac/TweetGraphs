@@ -19,7 +19,9 @@ Route::get('/v1/user/activate','UserController@ValidateUser');
 Route::get('/recover_pass',function(){
 	return view('PasswordRecover');
 });
+
 Route::get('/v1/user/change_password','UserController@RecoverySolicited');
+Route::get('/v1/user/tags','UserController@GetUserHashtags');
 Route::get('prueba','ItemController@create');
 
 
@@ -37,6 +39,7 @@ Route::post('/v1/user/mongo','MongoController@InsertTuit');
 
 
 
+
 Route::group(['middleware' => 'auth'], function () {
 	 Route::get('/v1/user/new_password', function () {
 	 	return view('PassEdit');
@@ -48,6 +51,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::post('/v1/user/update_password','UserController@NewPassword');
 
+Route::post('v1/user/tagsmodified','UserController@ModifyUserHashtags');
     Route::get('home/hash','UserController@GetUserHashtags');
 });
 
