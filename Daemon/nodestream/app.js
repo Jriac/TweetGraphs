@@ -42,7 +42,8 @@ var connectStream = function(string,db){
 
         stream.on('data', function (aTweet) {
             var myId = aTweet.id_str;
-            aTweet.created_at = moment(aTweet.created_at);
+            var d=new Date();
+            aTweet.created_at = d.getTime();
            // console.info( JSON.stringify(aTweet, null, 2) );
             //guardar en mongo
             console.info("insertando....");
@@ -148,7 +149,7 @@ globalStream.destroy();
         connectStream(reply,db);
     });
 
-}, 15*60*1000);
+}, (15*60*1000));
 /*
 *
 *  773418
