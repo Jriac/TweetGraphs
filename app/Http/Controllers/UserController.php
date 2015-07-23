@@ -118,6 +118,7 @@ class UserController extends Controller {
 
 	public function LogIn(){
 		$mail = $_POST['mail'];
+        
         $password = $_POST['password'];
         $result = $this->IsValidUser($mail,$password);
         if($result[1] == true){
