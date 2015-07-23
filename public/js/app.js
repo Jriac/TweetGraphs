@@ -14,5 +14,17 @@ angular.module("plunker")
             responsePromise.error(function (data, status, headers, config) {
                 alert("AJAX failed!");
             });
+            
         };
+    
+    $scope.addtag = function(tag){
+        $http.post('/v1/user/update_password',$scope.tags);
+        
+    }
+    
+       $scope.removetag = function(tag){
+        $http.post('/v1/user/update_password',$scope.tags);
+        
+    }
+    
     });

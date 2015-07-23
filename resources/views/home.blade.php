@@ -56,7 +56,8 @@
             </p>
         </div>
 
-        <tags-input ng-model="tags" data-ng-init="myData.doClick(item, $event)" on-tag-adding="">
+        <tags-input ng-model="tags" data-ng-init="myData.doClick(item, $event)" on-tag-added="addtag($tag)" on-tag-removed="removetag($tag)" >
+            
         </tags-input>
     </div>
     <!-- /container -->

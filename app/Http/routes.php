@@ -37,6 +37,7 @@ Route::post('/v1/user/mongo','MongoController@InsertTuit');
 
 
 
+
 Route::group(['middleware' => 'auth'], function () {
 	 Route::get('/v1/user/new_password', function () {
 	 	return view('PassEdit');
@@ -48,6 +49,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::post('/v1/user/update_password','UserController@NewPassword');
 
+Route::post('v1/user/tagsmodified','UserController@ModifyUserHashtags');
     Route::get('home/hash','UserController@GetUserHashtags');
 });
 
