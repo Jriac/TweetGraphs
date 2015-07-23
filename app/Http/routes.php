@@ -52,7 +52,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::post('/v1/user/update_password','UserController@NewPassword');
 
-Route::post('v1/user/tagsmodified','UserController@ModifyUserHashtags');
+    Route::post('v1/user/tagsmodified','UserController@ModifyUserHashtags');
+    
     Route::get('home/hash','UserController@GetUserHashtags');
 
 });

@@ -10,9 +10,8 @@ use Illuminate\Http\Request;
 
 use App\Hashtags;
 use App\UserHashtags;
-
 use Auth;
-
+use Input;
 use Mail;
 
 class UserController extends Controller {
@@ -210,13 +209,13 @@ class UserController extends Controller {
 		$userId = $user->id;
 		if($nOriginal == 0){
 			foreach ($modifiedHashtags as $hashtag) {
-				UserHashtags::AddUserHashtag($hashtag->text,$userId);
+				UserHashtags::AddUserHashtag($hashtag['text'],$userId);
 			}
 		}
 		else{
 			$i = 0;
 			foreach ($modifiedHashtags as $hashtag) {
-				$hashtag = $hashtag->text;
+				$hashtag = $hashtag['text'];
 				$yaExiste = false;
 				while ( $i < $nOriginal and !$yaExiste) {
 					$originalHashtag = $originalHashtags[$i]->text;
@@ -248,7 +247,7 @@ class UserController extends Controller {
 				$hashtag = $hashtag->text;
 				$yaExiste = false;
 				while ( $i < $nModified and !$yaExiste) {
-					$modifiedHashtag = $modifiedHashtags[$i]->text;
+					$modifiedHashtag = $modifiedHashtags[$i]['text'];
 					if ($hashtag == $modifiedHashtag) {
 						$yaExiste = true;
 					}
@@ -264,8 +263,8 @@ class UserController extends Controller {
 
 	public function ModifyUserHashtags(){
 		$originalHashtags = $this->GetUserHashtags();
-		$modifiedHashtags = $_POST['modified'];
-		$modifiedHashtags = json_decode($modifiedHashtags);
+		$modifiedHashtags = Input::all();
+		$originalHashtags = json_decode($originalHashtags);
 		$this->NewHashtags($originalHashtags,$modifiedHashtags);
 		$this->OldHashtags($originalHashtags,$modifiedHashtags);
 	}
