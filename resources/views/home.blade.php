@@ -56,10 +56,10 @@
             </p>
         </div>
         
-        <tags-input ng-model="tags" on-tag-added="envia $tag.text" on-tag-removed="envia $tag.text">
-            <auto-complete source="loadTags($query)"></auto-complete>
+        <tags-input ng-model="ngTagsInput">
+            
         </tags-input>
-
+        @{{myData.fromServer}}
     </div>
     <!-- /container -->
 

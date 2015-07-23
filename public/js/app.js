@@ -1,26 +1,13 @@
-angular.module('app').controller(
-    'MainCtrl',
-    [
-        '$scope',
-        '$http',
-        '$ItemResource',
-        '$nombre_modelo',
-        function($scope, $http, ItemResource, nombre_modelo) {
-            $scope.tags = ItemResource.items;
-            ItemResource.getItems();
-    
-            $scope.loadTags = function(query){
-                return $http.get('v1/tag');
-            };
-            
-            $scope.envia = function(str_name){
-                nombre_modelo.CrearTag(str_name);
-            };
-            
-            $scope.elimina = function(str_name){
-                console.log('sha creat eliminat' + str_name);
-            nombre_modelo.EliminarTag(str_name);
-            };
+angular.module("plunker", ['ngTagsInput'])
+    .controller("MainCtrl", function ($scope, $http) {
+        $scope.myData = {};
+        $scope.myData.doClick = function (item, event) {
+            var responsePromise = $http.get("/angularjs-examples/json-test-data.jsp");
+            responsePromise.success(function (data, status, headers, config) {
+                $scope.myData.fromServer = data.body;
+            });
+            responsePromise.error(function (data, status, headers, config) {
+                alert("AJAX failed!");
+            });
         }
-    ]
-);
+    });
