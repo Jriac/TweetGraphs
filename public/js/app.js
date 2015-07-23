@@ -4,16 +4,12 @@ angular.module("plunker", [ 'ngTagsInput' ]);
 angular.module("plunker")
     .controller("MainCtrl", function ($scope, $http) {
         $scope.myData = {};
-        $scope.myData = function (item, event) {
+        $scope.myData.doClick= function (item, event) {
             var responsePromise = $http.get("home/hash");
-            alert("hola");
+            
             responsePromise.success(function (data, status, headers, config) {
-
-                $scope.tags = [
-                    {
-                        text: data.body
-                    }
-                ];
+                console.log(data[0].text);
+                $scope.tags = data;
             });
             responsePromise.error(function (data, status, headers, config) {
                 alert("AJAX failed!");

@@ -55,8 +55,8 @@
                 <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
             </p>
         </div>
-        
-        <tags-input ng-model="tags">
+
+        <tags-input ng-model="tags" data-ng-init="myData.doClick(item, $event)" on-tag-adding="">
         </tags-input>
     </div>
     <!-- /container -->
