@@ -263,9 +263,8 @@ class UserController extends Controller {
 	}
 
 	public function ModifyUserHashtags(){
-		$originalHashtags = $_POST['original'];
+		$originalHashtags = $this->GetUserHashtags();
 		$modifiedHashtags = $_POST['modified'];
-		$originalHashtags = json_decode($originalHashtags);
 		$modifiedHashtags = json_decode($modifiedHashtags);
 		$this->NewHashtags($originalHashtags,$modifiedHashtags);
 		$this->OldHashtags($originalHashtags,$modifiedHashtags);
