@@ -5,7 +5,10 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
-		"laravel/framework": "5.0.*"
+		"laravel/framework": "5.0.*",
+		"abraham/twitteroauth": "^0.5.3",
+		"jenssegers/mongodb": "*",
+		"shift31/laravel-elasticsearch": "^1.3"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",

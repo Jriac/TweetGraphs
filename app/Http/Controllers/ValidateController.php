@@ -19,7 +19,8 @@ class ValidateController extends Controller {
 
 	static function ValidarUser($hash){
 		$mail = ValidateUser::ValidationComplete($hash);
-		User::UpdateAsActive($mail);
+		$user_id = User::UpdateAsActive($mail);
+		return $user_id;
 	}
 
 }

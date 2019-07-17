@@ -2,7 +2,8 @@
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-
+use App\Http\Controllers;
+define("ACCES_TOKEN_SECRET","Y5MQuNe5WlFoSWKi4T2mjKvX5Mnw3rnzzutlgUwDdvs8t");
 class Kernel extends ConsoleKernel {
 
 	/**
@@ -22,8 +23,8 @@ class Kernel extends ConsoleKernel {
 	 */
 	protected function schedule(Schedule $schedule)
 	{
-		$schedule->command('inspire')
-				 ->hourly();
+		
+				 
 	}
 
 }

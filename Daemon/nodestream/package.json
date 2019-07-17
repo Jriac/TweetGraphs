@@ -1,0 +1,11 @@
+{
+    "name":"twitter-node-couchbase",
+    "version":"0.0.1",
+    "dependencies":{
+        "mongodb":"*",
+        "ntwitter":"git://github.com/hardlifeofapo/ntwitter",
+        "moment":"*",
+        "twitter":"*",
+        "redis":"*"
+    }
+}
